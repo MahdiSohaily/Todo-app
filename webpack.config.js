@@ -21,14 +21,25 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        test: /\.html$/,
+        use: ['html-loader'],
+      },
+      {
+        test: /icon-cross.png$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'images/',
+          },
+        },
       },
     ],
   },
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
+    assetModuleFilename: 'images/[name][ext]',
   },
   optimization: {
     runtimeChunk: 'single',

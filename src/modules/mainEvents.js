@@ -1,7 +1,5 @@
 // project HTML page images
-import cross from '../images/icon-cross.svg';
-import moon from '../images/icon-moon.svg';
-// import sun from '../images/icon-sun.svg';
+import cross from '../images/icon-cross.png';
 
 export default function mainEvents() {
   // setting src attribute od every todo item
@@ -21,6 +19,16 @@ export default function mainEvents() {
     e.target.placeholder = 'Create a new todo...';
   });
 
+  const themeChanger = document.querySelector('.themeChanger');
+  themeChanger.addEventListener('click', (e) => {
+    const element = e.target;
 
-  document.querySelector('.themeChanger').src = moon;
+    if (element.classList.contains('night')) {
+      element.classList.remove('night');
+      element.src = './images/icon-moon.png';
+    } else {
+      element.classList.add('night');
+      element.src = './images/icon-sun.png';
+    }
+  });
 }
