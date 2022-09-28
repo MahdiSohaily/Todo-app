@@ -21,16 +21,46 @@ export default function mainEvents() {
     e.target.placeholder = 'Create a new todo...';
   });
 
+  // get user prefer color theme
+  function getCurrentTheme() {
+    let theme = window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+    localStorage.getItem('todo.theme')
+      ? (theme = localStorage.getItem('todo.theme'))
+      : null;
+    return theme;
+  }
+
+  // select theme changer button
   const themeChanger = document.querySelector('.themeChanger');
   themeChanger.addEventListener('click', (e) => {
     const element = e.target;
-
-    if (element.classList.contains('night')) {
-      element.classList.remove('night');
-      element.src = './images/icon-moon.png';
-    } else {
-      element.classList.add('night');
+    let theme = getCurrentTheme();
+    console.log(theme);
+    if (theme === 'dark') {
       element.src = './images/icon-sun.png';
+      theme = 'light';
+      localStorage.setItem('todo.theme', `${theme}`);
+    } else {
+      element.src = './images/icon-moon.png';
+      theme = 'dark';
+      localStorage.setItem('todo.theme', `${theme}`);
     }
+    loadTheme(theme);
+  });
+
+  function loadTheme(theme) {
+    const root = document.querySelector(':root');
+    if (theme === 'light') {
+      themeChanger.src = './images/icon-moon.png';
+    } else {
+      themeChanger.src = './images/icon-sun.png';
+    }
+    root.setAttribute('color-scheme', `${theme}`);
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    loadTheme(getCurrentTheme());
   });
 }
