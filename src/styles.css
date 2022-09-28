@@ -1,0 +1,279 @@
+:root {
+  --bg-body: hsl(0, 0%, 98%);
+  --bg-todo: hsl(0, 0%, 100%);
+  --text-active: hsl(244, 9%, 33%);
+  --state-color: hsl(240, 5%, 66%);
+  --state-hover-color: hsl(232, 11%, 39%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-body: hsl(235, 21%, 11%);
+    --bg-todo: hsl(235, 24%, 19%);
+    --text-active: hsl(236, 9%, 61%);
+    --state-color: hsl(233, 14%, 35%);
+    -state-hover-color: hsl(0deg, 0%, 100%);
+  }
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-size: 18px;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: var(--bg-body);
+}
+
+header.hero-banner {
+  background-image: url('../../public/images/bg-mobile-light.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 300px;
+}
+
+@media screen and (min-width: 40em) {
+  header.hero-banner {
+    background-image: url('../../public/images/bg-desktop-light.jpg');
+    background-size: cover;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  header.hero-banner {
+    background-image: url('../../public/images/bg-mobile-dark.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 300px;
+  }
+}
+@media screen and (prefers-color-scheme: dark) and (min-width: 40em) {
+  header.hero-banner {
+    background-image: url('../../public/images/bg-desktop-dark.jpg');
+    background-size: cover;
+  }
+}
+main {
+  position: relative;
+  min-height: 400px;
+}
+
+input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.primary-header {
+  text-transform: uppercase;
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 4px;
+}
+
+@media screen and (min-width: 40em) {
+  .primary-header {
+    font-size: 36px;
+  }
+}
+.bg-todo {
+  background-color: var(--bg-todo);
+}
+
+.px-4 {
+  padding: 1rem 1.5rem;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.mb-25 {
+  margin-bottom: 1.46rem;
+}
+
+.mt-50 {
+  margin-top: 2.5rem;
+}
+
+.text-status {
+  color: var(--state-color);
+}
+
+.todo-container {
+  position: absolute;
+  top: -220px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 540px;
+  padding-inline: 1rem;
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo-input::placeholder {
+  color: var(--state-color);
+}
+
+.todo-input:focus {
+  caret-color: hsl(220deg, 98%, 61%);
+  color: var(--text-active);
+}
+
+.todo-input:focus::placeholder {
+  color: var(--text-active);
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid var(--state-color);
+}
+
+.check {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid var(--state-color);
+}
+
+.check.active {
+  background: url('../../public/images/icon-check.svg'),
+    linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.check:hover {
+  border: 1px solid hsl(192deg, 100%, 67%);
+}
+
+.task {
+  padding-top: 4px;
+  color: var(--text-active);
+}
+
+.task.active {
+  text-decoration: line-through;
+  color: var(--state-color);
+}
+
+.cross-icon {
+  margin-left: auto;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+.todo-item:hover {
+  cursor: pointer;
+}
+
+.todo-item:hover .cross-icon {
+  opacity: 1;
+}
+
+.state {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.stages {
+  display: flex;
+  gap: 1rem;
+}
+
+.stage-item {
+  color: var(--state-color);
+  font-weight: 700;
+}
+
+.stage-item.active {
+  color: hsl(220deg, 98%, 61%);
+}
+
+.stage-item.active:hover {
+  color: hsl(220deg, 98%, 61%);
+}
+
+.stage-item:hover,
+#clear:hover {
+  cursor: pointer;
+  color: var(--state-hover-color);
+}
+
+#clear {
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=styles.css.map */
