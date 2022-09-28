@@ -21,7 +21,7 @@ export default function mainEvents() {
     e.target.placeholder = 'Create a new todo...';
   });
 
-  // get user prefer color theme
+  // get user prefer color theme through the system preferred theme or through local storage
   function getCurrentTheme() {
     let theme = window.matchMedia('(prefers-color-scheme: dark)').matches
       ? 'dark'
@@ -34,6 +34,8 @@ export default function mainEvents() {
 
   // select theme changer button
   const themeChanger = document.querySelector('.themeChanger');
+
+  // add an event listener to change between light and dark mode base on the user click
   themeChanger.addEventListener('click', (e) => {
     const element = e.target;
     let theme = getCurrentTheme();
@@ -50,6 +52,7 @@ export default function mainEvents() {
     loadTheme(theme);
   });
 
+  // load the current active theme and change the UI based on that
   function loadTheme(theme) {
     const root = document.querySelector(':root');
     if (theme === 'light') {
@@ -60,6 +63,7 @@ export default function mainEvents() {
     root.setAttribute('color-scheme', `${theme}`);
   }
 
+  // add an event lister to the window load to active the user's active theme
   window.addEventListener('DOMContentLoaded', () => {
     loadTheme(getCurrentTheme());
   });
