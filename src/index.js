@@ -9,3 +9,12 @@ document.querySelector('.themeChanger').src = moon;
 crossIcon.forEach((element) => {
   element.src = cross;
 });
+
+const todoinput = document.querySelector('.todo-input');
+todoinput.addEventListener('focus',(e) => {
+    e.target.placeholder = 'Currently typing...';
+})
+
+todoinput.addEventListener('blur',(e) => {
+    e.target.placeholder = 'Create a new todo...';
+})
