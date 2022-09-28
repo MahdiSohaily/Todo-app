@@ -1,4 +1,3 @@
-import _ from 'lodash';
 // project style file
 import './styles.css';
 // import project modules
