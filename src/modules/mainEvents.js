@@ -1,7 +1,7 @@
 // project HTML page images
 import cross from '../images/icon-cross.svg';
 import moon from '../images/icon-moon.svg';
-import sun from '../images/icon-sun.svg';
+// import sun from '../images/icon-sun.svg';
 
 export default function mainEvents() {
   const crossIcon = document.querySelectorAll('.cross-icon');
