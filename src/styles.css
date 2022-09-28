@@ -180,6 +180,10 @@ input {
   align-items: center;
 }
 
+.themeChanger {
+  cursor: pointer;
+}
+
 .todo-input::placeholder {
   color: var(--state-color);
 }
