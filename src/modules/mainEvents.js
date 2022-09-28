@@ -3,7 +3,7 @@ import cross from '../images/icon-cross.svg';
 import moon from '../images/icon-moon.svg';
 import sun from '../images/icon-sun.svg';
 
-export default function mainEvent() {
+export default function mainEvents() {
   const crossIcon = document.querySelectorAll('.cross-icon');
   document.querySelector('.themeChanger').src = moon;
   crossIcon.forEach((element) => {
