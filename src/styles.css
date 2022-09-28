@@ -89,7 +89,7 @@ body {
 }
 
 header.hero-banner {
-  background-image: url('../../public/images/bg-mobile-light.jpg');
+  background-image: url('./images/bg-mobile-light.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   height: 300px;
@@ -97,13 +97,13 @@ header.hero-banner {
 
 @media screen and (min-width: 40em) {
   header.hero-banner {
-    background-image: url('../../public/images/bg-desktop-light.jpg');
+    background-image: url('./images/bg-desktop-light.jpg');
     background-size: cover;
   }
 }
 @media (prefers-color-scheme: dark) {
   header.hero-banner {
-    background-image: url('../../public/images/bg-mobile-dark.jpg');
+    background-image: url('./images/bg-mobile-dark.jpg');
     background-repeat: no-repeat;
     background-size: contain;
     height: 300px;
@@ -111,7 +111,7 @@ header.hero-banner {
 }
 @media screen and (prefers-color-scheme: dark) and (min-width: 40em) {
   header.hero-banner {
-    background-image: url('../../public/images/bg-desktop-dark.jpg');
+    background-image: url('./images/bg-desktop-dark.jpg');
     background-size: cover;
   }
 }
@@ -208,7 +208,7 @@ input {
 }
 
 .check.active {
-  background: url('../../public/images/icon-check.svg'),
+  background: url('./images/icon-check.svg'),
     linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
   background-repeat: no-repeat;
   background-position: center;
