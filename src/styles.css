@@ -16,6 +16,22 @@
   }
 }
 
+[color-scheme='light'] {
+  --bg-body: hsl(0, 0%, 98%);
+  --bg-todo: hsl(0, 0%, 100%);
+  --text-active: hsl(244, 9%, 33%);
+  --state-color: hsl(240, 5%, 66%);
+  --state-hover-color: hsl(232, 11%, 39%);
+}
+
+[color-scheme='dark'] {
+  --bg-body: hsl(235, 21%, 11%);
+  --bg-todo: hsl(235, 24%, 19%);
+  --text-active: hsl(236, 9%, 61%);
+  --state-color: hsl(233, 14%, 35%);
+  --state-hover-color: hsl(0deg, 0%, 100%);
+}
+
 /* Box sizing rules */
 *,
 *::before,
@@ -214,8 +230,7 @@ input {
 }
 
 .check.active {
-  background:
-    url('./images/icon-check.png'),
+  background: url('./images/icon-check.png'),
     linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
   background-repeat: no-repeat;
   background-position: center;

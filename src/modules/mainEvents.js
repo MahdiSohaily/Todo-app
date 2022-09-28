@@ -1,5 +1,7 @@
 // project HTML page images
 import cross from '../images/icon-cross.png';
+// project style file
+import '../styles.css';
 
 export default function mainEvents() {
   // setting src attribute od every todo item
