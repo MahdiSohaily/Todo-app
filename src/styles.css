@@ -12,7 +12,7 @@
     --bg-todo: hsl(235, 24%, 19%);
     --text-active: hsl(236, 9%, 61%);
     --state-color: hsl(233, 14%, 35%);
-    -state-hover-color: hsl(0deg, 0%, 100%);
+    --state-hover-color: hsl(0deg, 0%, 100%);
   }
 }
 
@@ -47,6 +47,7 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   font-size: 18px;
+  background-color: var(--bg-body);
 }
 
 /* A elements that don't have a class get default styles */
@@ -74,6 +75,7 @@ select {
   html:focus-within {
     scroll-behavior: auto;
   }
+
   *,
   *::before,
   *::after {
@@ -82,10 +84,6 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-body {
-  background-color: var(--bg-body);
 }
 
 header.hero-banner {
@@ -101,6 +99,7 @@ header.hero-banner {
     background-size: cover;
   }
 }
+
 @media (prefers-color-scheme: dark) {
   header.hero-banner {
     background-image: url('./images/bg-mobile-dark.jpg');
@@ -109,12 +108,14 @@ header.hero-banner {
     height: 300px;
   }
 }
+
 @media screen and (prefers-color-scheme: dark) and (min-width: 40em) {
   header.hero-banner {
     background-image: url('./images/bg-desktop-dark.jpg');
     background-size: cover;
   }
 }
+
 main {
   position: relative;
   min-height: 400px;
@@ -140,6 +141,7 @@ input {
     font-size: 36px;
   }
 }
+
 .bg-todo {
   background-color: var(--bg-todo);
 }
@@ -212,7 +214,8 @@ input {
 }
 
 .check.active {
-  background: url('./images/icon-check.svg'),
+  background:
+    url('./images/icon-check.svg'),
     linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
   background-repeat: no-repeat;
   background-position: center;
@@ -270,14 +273,12 @@ input {
   color: hsl(220deg, 98%, 61%);
 }
 
+#clear {
+  text-decoration: none;
+}
+
 .stage-item:hover,
 #clear:hover {
   cursor: pointer;
   color: var(--state-hover-color);
 }
-
-#clear {
-  text-decoration: none;
-}
-
-/*# sourceMappingURL=styles.css.map */
