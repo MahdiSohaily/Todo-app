@@ -129,8 +129,15 @@ export default class todoController {
   //
   getPartOfData() {
     const stage = document.querySelectorAll('.stage-item');
+    let activeItem = document.querySelector('.stage-item.active');
     stage.forEach((element) => {
       element.addEventListener('click', (e) => {
+        const current = e.currentTarget;
+        if (activeItem) {
+          activeItem.classList.remove('active');
+        }
+        activeItem = current;
+        current.classList.add('active');
         const part = e.target.getAttribute('data-display');
         this.displayTodo(part);
       });
