@@ -1,7 +1,7 @@
 import { constant } from 'lodash';
 import Todo from './Todo.js';
 export default class todoController {
-  constructor() {
+  run() {
     this.formListener();
     this.displayTodo();
   }
@@ -18,13 +18,8 @@ export default class todoController {
     const todo = new Todo(input.value);
     todo.addTodo();
     input.value = null;
-    dataContainer.innerHTML += `
-        <li class="todo-item px-4" id="${todo.index}" >
-            <input type="radio" name="vehicle1" value="${todo.description}">
-            <p title="Double click to edit" class="task">${todo.description}</p>
-            <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
-        </li>`;
     const control = new todoController();
+    control.displayTodo();
     control.enableEdit();
   }
 
