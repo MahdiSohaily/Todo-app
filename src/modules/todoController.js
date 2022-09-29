@@ -17,6 +17,7 @@ export default class todoController {
     control.displayTodo();
   }
 
+  // function to get data from local storage and display it to the main page
   displayTodo() {
     let dataContainer = document.querySelector('.todo-list');
     dataContainer.innerHTML = '';
@@ -34,6 +35,7 @@ export default class todoController {
     }
   }
 
+  // function to create corresponding HTML elements for local storage data
   generateElements(element) {
     let elements = '';
     if (element.completed) {
@@ -52,6 +54,8 @@ export default class todoController {
     }
     return elements;
   }
+
+  // function to listen for double click to edit intended todo item
   enableEdit() {
     const tasks = document.querySelectorAll('.task');
     tasks.forEach((element) => {
