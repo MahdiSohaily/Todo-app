@@ -40,6 +40,7 @@
 }
 
 /* ----------- CSS RESET STYLES START ---------- */
+
 /* Box sizing rules */
 *,
 *::before,
@@ -115,6 +116,7 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
 /* ----------- CSS RESET STYLES END ---------- */
 
 /* ----------- UTILITY CLASSES START ---------- */
@@ -123,7 +125,7 @@ main {
   min-height: 380px;
 }
 
-input {
+input[type='text'] {
   width: 100%;
   background-color: transparent;
   border: none;
@@ -185,7 +187,7 @@ header.hero-banner {
   }
 }
 
-/* change the background image for light mode (automatically)*/
+/* change the background image for light mode (automatically) */
 @media (prefers-color-scheme: dark) {
   header.hero-banner {
     background-image: url('./images/bg-mobile-dark.jpg');
@@ -195,7 +197,7 @@ header.hero-banner {
   }
 }
 
-/* change the background image for dark mode mode (automatically)*/
+/* change the background image for dark mode mode (automatically) */
 @media screen and (prefers-color-scheme: dark) and (min-width: 40em) {
   header.hero-banner {
     background-image: url('./images/bg-desktop-dark.jpg');
@@ -216,6 +218,7 @@ header.hero-banner {
 }
 
 /* ----------- HEADER SECTION STYLES END ---------- */
+
 /* ----------- TO DO CONTAINER SECTION STYLES START ---------- */
 .todo-container {
   position: absolute;
@@ -258,22 +261,31 @@ header.hero-banner {
     box-shadow: 0 4px 16px -2px var(--light-shadow);
   }
 }
+
 .todo-item {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
+  text-align: left;
   border-bottom: 1px solid var(--state-color);
 }
 
-.check {
+input[type='radio'] {
   width: 25px;
   height: 25px;
   border-radius: 50%;
   border: 1px solid var(--state-color);
+  background-color: rebeccapurple;
 }
 
-.check.active {
-  background: url('./images/icon-check.png'),
+.check:hover {
+  border: 1px solid hsl(192deg, 100%, 67%);
+}
+
+input:checked + .check {
+  background:
+    url('./images/icon-check.png'),
     linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
   background-repeat: no-repeat;
   width: 25px;
@@ -281,16 +293,13 @@ header.hero-banner {
   background-position: center;
 }
 
-.check:hover {
-  border: 1px solid hsl(192deg, 100%, 67%);
-}
-
 .task {
   padding-top: 4px;
+  width: 100%;
   color: var(--text-active);
 }
 
-.task.active {
+input:checked + .task {
   text-decoration: line-through;
   color: var(--state-color);
 }
@@ -335,7 +344,7 @@ header.hero-banner {
   .stages-menu {
     position: static;
     height: auto;
-    background-color: none;
+    background-color: transparent;
     display: flex;
     gap: 1rem;
   }
@@ -377,4 +386,3 @@ p.footer {
     margin-top: 3rem;
   }
 }
-/* -------------- FOOTER SECTION STYLES END ------------- */

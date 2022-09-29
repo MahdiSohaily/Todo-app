@@ -1,8 +1,4 @@
+/* eslint-disable linebreak-style */
+import start from './modules/Start.js';
 
-// import project modules
-import mainEvents from './modules/mainEvents.js';
-import appendTOdo from './modules/Todo.js';
-
-const container = document.querySelector('.todo-list');
-container.innerHTML = appendTOdo();
-mainEvents();
+start();

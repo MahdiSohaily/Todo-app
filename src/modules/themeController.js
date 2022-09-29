@@ -1,15 +1,7 @@
-// project HTML page images
-import cross from '../images/icon-cross.png';
 // project style file
 import '../styles.css';
 
-export default function mainEvents() {
-  // setting src attribute od every todo item
-  const crossIcon = document.querySelectorAll('.cross-icon');
-  crossIcon.forEach((element) => {
-    element.src = cross;
-  });
-
+export default function themeController() {
   // changing todo input element's placeholder value on focus
   const todoInput = document.querySelector('.todo-input');
   todoInput.addEventListener('focus', (e) => {
@@ -35,23 +27,6 @@ export default function mainEvents() {
   // select theme changer button
   const themeChanger = document.querySelector('.themeChanger');
 
-  // add an event listener to change between light and dark mode base on the user click
-  themeChanger.addEventListener('click', (e) => {
-    const element = e.target;
-    let theme = getCurrentTheme();
-    console.log(theme);
-    if (theme === 'dark') {
-      element.src = './images/icon-sun.png';
-      theme = 'light';
-      localStorage.setItem('todo.theme', `${theme}`);
-    } else {
-      element.src = './images/icon-moon.png';
-      theme = 'dark';
-      localStorage.setItem('todo.theme', `${theme}`);
-    }
-    loadTheme(theme);
-  });
-
   // load the current active theme and change the UI based on that
   function loadTheme(theme) {
     const root = document.querySelector(':root');
@@ -62,6 +37,23 @@ export default function mainEvents() {
     }
     root.setAttribute('color-scheme', `${theme}`);
   }
+
+  // add an event listener to change between light and dark mode base on the user click
+  themeChanger.addEventListener('click', (e) => {
+    const element = e.target;
+    let theme = getCurrentTheme();
+    if (theme === 'dark') {
+      element.src = './images/icon-sun.png';
+      theme = 'light';
+      localStorage.setItem('todo.theme', `${theme}`);
+    } else {
+      element.src = './images/icon-moon.png';
+      theme = 'dark';
+      localStorage.setItem('todo.theme', `${theme}`);
+    }
+
+    loadTheme(theme);
+  });
 
   // add an event lister to the window load to active the user's active theme
   window.addEventListener('DOMContentLoaded', () => {
