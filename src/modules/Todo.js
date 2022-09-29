@@ -1,10 +1,12 @@
 export default class Todo {
+  //constructor function to assign the todo properties
   constructor(description, completed = false) {
     this.description = description;
     this.index = this.getIndex() + 1;
     this.completed = completed;
   }
 
+  // function to get the array length from local storage
   getIndex() {
     let items = JSON.parse(localStorage.getItem('todos'));
     return items ? items.length : 0;
@@ -37,8 +39,7 @@ export default class Todo {
     const toDos = this.getTodo();
     let data = toDos.filter(this.cleanData(index));
     let update = data.map(this.updateID(index));
-    console.log(update);
-    localStorage.setItem('todos', JSON.stringify(data));
+    localStorage.setItem('todos', JSON.stringify(update));
   }
 
   // function to filter existing data from the one intended to be deleted

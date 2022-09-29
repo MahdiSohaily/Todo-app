@@ -23,7 +23,7 @@ export default class todoController {
     }
     dataContainer.innerHTML += `
         <li class="todo-item px-4" id="${todo.index}" >
-            <input type="checkbox" name="vehicle1" value="${todo.description}">
+            <input class="mark-complete" type="checkbox" name="todo" value="${todo.description}">
             <p title="Double click to edit" class="task">${todo.description}</p>
             <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
         </li>`;
@@ -44,6 +44,7 @@ export default class todoController {
       });
       this.enableEdit();
       this.enableDelete();
+      this.changeStatus();
     } else {
       dataContainer.innerHTML = `
         <li class="todo-item px-4">
@@ -58,14 +59,14 @@ export default class todoController {
     if (element.completed) {
       elements = `
             <li class="todo-item px-4 active" id="${element.index}" >
-                <input type="checkbox" name="vehicle1" value="${element.description}"> 
+                <input class="mark-complete" type="checkbox" name="todo" value="${element.description}"> 
                 <p title="Double click to edit" class="task">${element.description}</p>
                 <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
             </li>`;
     } else {
       elements = `
             <li class="todo-item px-4" id="${element.index}" >
-                <input type="checkbox" name="vehicle1" value="${element.description}">
+                <input class="mark-complete" type="checkbox" name="todo" value="${element.description}">
                 <p title="Double click to edit" class="task">${element.description}</p>
                 <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
             </li>`;
@@ -98,7 +99,34 @@ export default class todoController {
         const todo = new Todo();
         todo.deleteTodo(parent.id);
         parent.remove();
+        this.displayTodo();
       });
     });
+  }
+
+  // a function to add an event listener to checkbox input to mark todo as completed;
+  changeStatus() {
+    const todos = document.querySelectorAll('.mark-complete');
+    todos.forEach((element) => {
+      element.addEventListener('change', (e) => {
+        const index = e.target.closest('.todo-item').id;
+        if (e.target.checked) {
+          this.markComplete(index);
+        } else {
+          this.undoComplete(index);
+        }
+      });
+    });
+  }
+
+  // function to mark a todo task as complete
+  markComplete(index) {
+    const todo = new Todo()
+    todo.completed()
+  }
+
+  // function to undo mark as complete
+  undoComplete(index) {
+    console.log(`undo ${index}`);
   }
 }
