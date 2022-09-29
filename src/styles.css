@@ -125,11 +125,12 @@ main {
   min-height: 380px;
 }
 
-input[type='text'] {
+.todo-input {
   width: 100%;
   background-color: transparent;
   border: none;
   outline: none;
+  color: var(--state-color);
 }
 
 .primary-header {
@@ -284,8 +285,7 @@ input[type='radio'] {
 }
 
 input:checked + .check {
-  background:
-    url('./images/icon-check.png'),
+  background: url('./images/icon-check.png'),
     linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
   background-repeat: no-repeat;
   width: 25px;
