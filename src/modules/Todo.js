@@ -1,7 +1,7 @@
 export default class Todo {
   constructor(description, completed = false) {
     this.description = description;
-    this.index = this.getIndex();
+    this.index = this.getIndex() + 1;
     this.completed = completed;
   }
 
