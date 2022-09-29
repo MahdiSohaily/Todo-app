@@ -209,7 +209,7 @@ header.hero-banner {
 /* ----------- TO DO CONTAINER SECTION STYLES START ---------- */
 .todo-container {
   position: absolute;
-  top: -220px;
+  top: -260px;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
@@ -300,8 +300,24 @@ header.hero-banner {
 }
 
 .stages-menu {
+  position: absolute;
+  inset: 0;
+  top: 5rem;
+  background-color: rebeccapurple;
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
+  border-radius: 0.25rem;
+}
+
+@media screen and (min-width: 40em) {
+  .stages-menu {
+    position: static;
+    background-color: transparent;
+    display: flex;
+    gap: 1rem;
+  }
 }
 
 .stage-item {
