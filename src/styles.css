@@ -4,6 +4,7 @@
   --text-active: hsl(244, 9%, 33%);
   --state-color: hsl(240, 5%, 66%);
   --state-hover-color: hsl(232, 11%, 39%);
+  --light-shadow: hsl(0, 0%, 86%);
 }
 
 /* color theme for dark mode system or OS */
@@ -14,6 +15,7 @@
     --text-active: hsl(236, 9%, 61%);
     --state-color: hsl(233, 14%, 35%);
     --state-hover-color: hsl(0deg, 0%, 100%);
+    --light-shadow: hsla(235, 24%, 19%, 0.87);
   }
 }
 
@@ -24,6 +26,7 @@
   --text-active: hsl(244, 9%, 33%);
   --state-color: hsl(240, 5%, 66%);
   --state-hover-color: hsl(232, 11%, 39%);
+  --light-shadow: rgb(219, 219, 219);
 }
 
 /* set the root attribute color theme to dark (switching manually) */
@@ -33,6 +36,7 @@
   --text-active: hsl(236, 9%, 61%);
   --state-color: hsl(233, 14%, 35%);
   --state-hover-color: hsl(0deg, 0%, 100%);
+  --light-shadow: hsla(235, 24%, 19%, 0.87);
 }
 
 /* ----------- CSS RESET STYLES START ---------- */
@@ -243,6 +247,9 @@ header.hero-banner {
 }
 
 /* 2.2 todo list section styles  */
+.todo-list-container {
+  box-shadow: 0 4px 16px -2px var(--light-shadow);
+}
 .todo-item {
   display: flex;
   align-items: center;
@@ -346,3 +353,11 @@ header.hero-banner {
   cursor: pointer;
   color: var(--state-hover-color);
 }
+
+/* -------------- FOOTER SECTION STYLES START ------------- */
+footer p {
+  text-align: center;
+  color: var(--state-color);
+  font-size: 14px;
+}
+/* -------------- FOOTER SECTION STYLES END ------------- */
