@@ -40,6 +40,7 @@
 }
 
 /* ----------- CSS RESET STYLES START ---------- */
+
 /* Box sizing rules */
 *,
 *::before,
@@ -115,6 +116,7 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
 /* ----------- CSS RESET STYLES END ---------- */
 
 /* ----------- UTILITY CLASSES START ---------- */
@@ -185,7 +187,7 @@ header.hero-banner {
   }
 }
 
-/* change the background image for light mode (automatically)*/
+/* change the background image for light mode (automatically) */
 @media (prefers-color-scheme: dark) {
   header.hero-banner {
     background-image: url('./images/bg-mobile-dark.jpg');
@@ -195,7 +197,7 @@ header.hero-banner {
   }
 }
 
-/* change the background image for dark mode mode (automatically)*/
+/* change the background image for dark mode mode (automatically) */
 @media screen and (prefers-color-scheme: dark) and (min-width: 40em) {
   header.hero-banner {
     background-image: url('./images/bg-desktop-dark.jpg');
@@ -216,6 +218,7 @@ header.hero-banner {
 }
 
 /* ----------- HEADER SECTION STYLES END ---------- */
+
 /* ----------- TO DO CONTAINER SECTION STYLES START ---------- */
 .todo-container {
   position: absolute;
@@ -258,6 +261,7 @@ header.hero-banner {
     box-shadow: 0 4px 16px -2px var(--light-shadow);
   }
 }
+
 .todo-item {
   display: flex;
   align-items: center;
@@ -275,17 +279,18 @@ input[type='radio'] {
   background-color: rebeccapurple;
 }
 
+.check:hover {
+  border: 1px solid hsl(192deg, 100%, 67%);
+}
+
 input:checked + .check {
-  background: url('./images/icon-check.png'),
+  background:
+    url('./images/icon-check.png'),
     linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
   background-repeat: no-repeat;
   width: 25px;
   height: 25px;
   background-position: center;
-}
-
-.check:hover {
-  border: 1px solid hsl(192deg, 100%, 67%);
 }
 
 .task {
@@ -339,7 +344,7 @@ input:checked + .task {
   .stages-menu {
     position: static;
     height: auto;
-    background-color: none;
+    background-color: transparent;
     display: flex;
     gap: 1rem;
   }
@@ -381,4 +386,3 @@ p.footer {
     margin-top: 3rem;
   }
 }
-/* -------------- FOOTER SECTION STYLES END ------------- */

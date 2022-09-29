@@ -1,12 +1,13 @@
-import { constant } from 'lodash';
 import Todo from './Todo.js';
-export default class todoController {
+
+export default class TodoController {
   run() {
     this.formListener();
     this.displayTodo();
     this.getPartOfData();
     this.deleteCompleted();
   }
+
   // function to listen to form submission
   formListener() {
     const form = document.querySelector('.form');
@@ -15,7 +16,7 @@ export default class todoController {
 
   // function to create new todo object
   createTodo() {
-    let dataContainer = document.querySelector('.todo-list');
+    const dataContainer = document.querySelector('.todo-list');
     const input = document.querySelector('.todo-input');
     const todo = new Todo(input.value);
     todo.addTodo();
@@ -29,15 +30,15 @@ export default class todoController {
             <p title="Double click to edit" class="task">${todo.description}</p>
             <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
         </li>`;
-    const control = new todoController();
-    control.enableEdit();
-    control.enableDelete();
-    control.changeStatus();
+    const Control = new TodoController();
+    Control.enableEdit();
+    Control.enableDelete();
+    Control.changeStatus();
   }
 
   // function to get data from local storage and display it to the main page
   displayTodo(state = 'all') {
-    let dataContainer = document.querySelector('.todo-list');
+    const dataContainer = document.querySelector('.todo-list');
     dataContainer.innerHTML = '';
     const todo = new Todo();
     const data = todo.getTodo(state);
@@ -91,12 +92,27 @@ export default class todoController {
         input.focus();
       });
     });
+    const markComplete = document.querySelectorAll('.mark-complete');
+    markComplete.forEach((element) => {
+      element.addEventListener('blur', (e) => {
+        const input = e.target;
+        const index = input.closest('.todo-item').id;
+        const newValue = input.value;
+
+        const todo = new Todo();
+        todo.updateTodo(index, newValue);
+
+        input.nextElementSibling.style.display = 'block';
+        input.type = 'checkbox';
+        input.nextElementSibling.innerText = newValue;
+      });
+    });
   }
 
   // function to listen for delete icon click to delete intended todo item
   enableDelete() {
-    const delete_btn = document.querySelectorAll('.cross-icon');
-    delete_btn.forEach((element) => {
+    const deleteBtn = document.querySelectorAll('.cross-icon');
+    deleteBtn.forEach((element) => {
       element.addEventListener('click', (e) => {
         const parent = e.target.closest('.todo-item');
         const todo = new Todo();
@@ -128,7 +144,7 @@ export default class todoController {
     todo.markComplete(index, completed);
   }
 
-  //a function to get a specific part of data
+  // function to get a specific part of data
   getPartOfData() {
     const stage = document.querySelectorAll('.stage-item');
     let activeItem = document.querySelector('.stage-item.active');
@@ -146,7 +162,7 @@ export default class todoController {
     });
   }
 
-  //function to delete all the completed tasks at once
+  // function to delete all the completed tasks at once
   deleteCompleted() {
     const removeCompleted = document.querySelector('.remove-complete');
     removeCompleted.addEventListener('click', () => {

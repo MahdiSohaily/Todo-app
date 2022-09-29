@@ -27,6 +27,17 @@ export default function themeController() {
   // select theme changer button
   const themeChanger = document.querySelector('.themeChanger');
 
+  // load the current active theme and change the UI based on that
+  function loadTheme(theme) {
+    const root = document.querySelector(':root');
+    if (theme === 'light') {
+      themeChanger.src = './images/icon-moon.png';
+    } else {
+      themeChanger.src = './images/icon-sun.png';
+    }
+    root.setAttribute('color-scheme', `${theme}`);
+  }
+
   // add an event listener to change between light and dark mode base on the user click
   themeChanger.addEventListener('click', (e) => {
     const element = e.target;
@@ -40,19 +51,9 @@ export default function themeController() {
       theme = 'dark';
       localStorage.setItem('todo.theme', `${theme}`);
     }
+
     loadTheme(theme);
   });
-
-  // load the current active theme and change the UI based on that
-  function loadTheme(theme) {
-    const root = document.querySelector(':root');
-    if (theme === 'light') {
-      themeChanger.src = './images/icon-moon.png';
-    } else {
-      themeChanger.src = './images/icon-sun.png';
-    }
-    root.setAttribute('color-scheme', `${theme}`);
-  }
 
   // add an event lister to the window load to active the user's active theme
   window.addEventListener('DOMContentLoaded', () => {

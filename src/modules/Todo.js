@@ -40,13 +40,13 @@ export default class Todo {
   getPartOfData(part) {
     if (part === 'active') {
       return function (element) {
-        if ((element.completed === false)) {
+        if (element.completed === false) {
           return element;
         }
       };
     } else {
       return function (element) {
-        if ((element.completed === true)) {
+        if (element.completed === true) {
           return element;
         }
       };
@@ -65,6 +65,23 @@ export default class Todo {
   cleanData(index) {
     return function (element) {
       return element.index != index;
+    };
+  }
+
+  //function to update a todo task
+  updateTodo(index, value) {
+    const toDos = this.getTodo();
+    let update = toDos.map(this.updateData(index, value));
+    this.updateLocalStorage(update);
+  }
+
+  // function to filter existing data from the one intended to be deleted
+  updateData(index, value) {
+    return function (element) {
+      if (element.index == index) {
+        element.description = value;
+      }
+      return element;
     };
   }
 
