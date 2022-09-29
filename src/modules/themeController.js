@@ -3,7 +3,7 @@ import cross from '../images/icon-cross.png';
 // project style file
 import '../styles.css';
 
-export default function themeEvents() {
+export default function themeController() {
   // setting src attribute od every todo item
   const crossIcon = document.querySelectorAll('.cross-icon');
   crossIcon.forEach((element) => {
