@@ -34,5 +34,23 @@ export default class todoController {
     }
   }
 
-  
+  generateElements(element) {
+    let elements = '';
+    if (element.completed) {
+      elements = `
+            <li class="todo-item px-4">
+                <div class="check active"></div>
+                <p class="task active">${element.description}</p>
+                <img class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
+            </li>`;
+    } else {
+      elements = `
+            <li class="todo-item px-4">
+                <div class="check"></div>
+                <p class="task">${element.description}</p>
+                <img class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
+            </li>`;
+    }
+    return elements;
+  }
 }
