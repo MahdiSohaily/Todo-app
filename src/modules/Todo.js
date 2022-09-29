@@ -18,6 +18,7 @@ export default class Todo {
       todos = JSON.parse(dataStored);
     }
     todos.push(this);
+    console.log(this);
     localStorage.setItem('todos', JSON.stringify(todos));
   }
 
