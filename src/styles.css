@@ -70,8 +70,14 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  font-size: 18px;
+  font-size: 16px;
   background-color: var(--bg-body);
+}
+
+@media screen and (min-width: 40em) {
+  body {
+    font-size: 18px;
+  }
 }
 
 /* A elements that don't have a class get default styles */
@@ -247,8 +253,10 @@ header.hero-banner {
 }
 
 /* 2.2 todo list section styles  */
-.todo-list-container {
-  box-shadow: 0 4px 16px -2px var(--light-shadow);
+@media screen and (min-width: 40em) {
+  .todo-list-container {
+    box-shadow: 0 4px 16px -2px var(--light-shadow);
+  }
 }
 .todo-item {
   display: flex;
@@ -268,6 +276,8 @@ header.hero-banner {
   background: url('./images/icon-check.png'),
     linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
   background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
   background-position: center;
 }
 
@@ -312,7 +322,7 @@ header.hero-banner {
   position: absolute;
   inset: 0;
   height: 50px;
-  top: 5rem;
+  top: 4.5rem;
   background-color: var(--bg-todo);
   display: flex;
   justify-content: center;
@@ -355,9 +365,16 @@ header.hero-banner {
 }
 
 /* -------------- FOOTER SECTION STYLES START ------------- */
-footer p {
+p.footer {
   text-align: center;
+  margin-top: 6rem;
   color: var(--state-color);
   font-size: 14px;
+}
+
+@media screen and (min-width: 40em) {
+  p.footer {
+    margin-top: 3rem;
+  }
 }
 /* -------------- FOOTER SECTION STYLES END ------------- */
