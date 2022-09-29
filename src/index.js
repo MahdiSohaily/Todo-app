@@ -1,4 +1,3 @@
-
 // import project modules
 import mainEvents from './modules/mainEvents.js';
 import appendTOdo from './modules/Todo.js';
