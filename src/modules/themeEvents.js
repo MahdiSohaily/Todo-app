@@ -3,7 +3,7 @@ import cross from '../images/icon-cross.png';
 // project style file
 import '../styles.css';
 
-export default function mainEvents() {
+export default function themeEvents() {
   // setting src attribute od every todo item
   const crossIcon = document.querySelectorAll('.cross-icon');
   crossIcon.forEach((element) => {
@@ -39,7 +39,6 @@ export default function mainEvents() {
   themeChanger.addEventListener('click', (e) => {
     const element = e.target;
     let theme = getCurrentTheme();
-    console.log(theme);
     if (theme === 'dark') {
       element.src = './images/icon-sun.png';
       theme = 'light';
