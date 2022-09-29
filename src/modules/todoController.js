@@ -23,12 +23,13 @@ export default class todoController {
     }
     dataContainer.innerHTML += `
         <li class="todo-item px-4" id="${todo.index}" >
-            <input type="radio" name="vehicle1" value="${todo.description}">
+            <input type="checkbox" name="vehicle1" value="${todo.description}">
             <p title="Double click to edit" class="task">${todo.description}</p>
             <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
         </li>`;
     const control = new todoController();
     control.enableEdit();
+    control.enableDelete();
   }
 
   // function to get data from local storage and display it to the main page
@@ -42,6 +43,7 @@ export default class todoController {
         dataContainer.innerHTML += this.generateElements(element);
       });
       this.enableEdit();
+      this.enableDelete();
     } else {
       dataContainer.innerHTML = `
         <li class="todo-item px-4">
@@ -56,14 +58,14 @@ export default class todoController {
     if (element.completed) {
       elements = `
             <li class="todo-item px-4 active" id="${element.index}" >
-                <input type="radio" name="vehicle1" value="${element.description}"> 
+                <input type="checkbox" name="vehicle1" value="${element.description}"> 
                 <p title="Double click to edit" class="task">${element.description}</p>
                 <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
             </li>`;
     } else {
       elements = `
             <li class="todo-item px-4" id="${element.index}" >
-                <input type="radio" name="vehicle1" value="${element.description}">
+                <input type="checkbox" name="vehicle1" value="${element.description}">
                 <p title="Double click to edit" class="task">${element.description}</p>
                 <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
             </li>`;
@@ -88,5 +90,12 @@ export default class todoController {
   }
 
   // function to listen for delete icon click to delete intended todo item
-  enableDelete() {}
+  enableDelete() {
+    const delete_btn = document.querySelectorAll('.cross-icon');
+    delete_btn.forEach((element) => {
+      element.addEventListener('click', (e) => {
+
+      });
+    });
+  }
 }
