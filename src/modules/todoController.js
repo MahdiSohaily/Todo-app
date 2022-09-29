@@ -9,12 +9,19 @@ export default class todoController {
 
   // function to create new todo object
   createTodo() {
+    let dataContainer = document.querySelector('.todo-list');
     const input = document.querySelector('.todo-input');
     const todo = new Todo(input.value);
     todo.addTodo();
     input.value = null;
+    dataContainer.innerHTML += `
+        <li class="todo-item px-4" id="${todo.index}" >
+            <input type="radio" name="vehicle1" value="${todo.description}">
+            <p title="Double click to edit" class="task">${todo.description}</p>
+            <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
+        </li>`;
     const control = new todoController();
-    control.displayTodo();
+    control.enableEdit();
   }
 
   // function to get data from local storage and display it to the main page
@@ -22,11 +29,12 @@ export default class todoController {
     let dataContainer = document.querySelector('.todo-list');
     dataContainer.innerHTML = '';
     const todo = new Todo();
-    const data = todo.getTodo();
+    const data = todo.getTodo(state);
     if (data) {
       data.forEach((element) => {
         dataContainer.innerHTML += this.generateElements(element);
       });
+      this.enableEdit();
     } else {
       dataContainer.innerHTML = `
         <li class="todo-item px-4">
@@ -65,6 +73,9 @@ export default class todoController {
         element.style.display = 'none';
         const input = element.previousElementSibling;
         input.type = 'text';
+        const end = input.value.length;
+        input.setSelectionRange(end, end);
+        input.focus();
       });
     });
   }

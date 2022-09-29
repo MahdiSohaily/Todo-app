@@ -9,3 +9,4 @@ const controller = new todoController();
 controller.formListener();
 controller.displayTodo();
 controller.enableEdit();
+localStorage.removeItem('todos')
