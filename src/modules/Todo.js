@@ -6,7 +6,7 @@ export default class Todo {
   }
 
   getIndex() {
-    let items = localStorage.getItem('todos');
+    let items = JSON.parse(localStorage.getItem('todos'));
     return items ? items.length : 0;
   }
 
@@ -19,5 +19,14 @@ export default class Todo {
     }
     todos.push(this);
     localStorage.setItem('todos', JSON.stringify(todos));
+  }
+
+  getTodo() {
+    let todos = 0;
+    if (this.getIndex()) {
+      let dataStored = localStorage.getItem('todos');
+      todos = JSON.parse(dataStored);
+    }
+    return todos;
   }
 }

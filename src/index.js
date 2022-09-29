@@ -7,3 +7,5 @@ const container = document.querySelector('.todo-list');
 themeController();
 const controller = new todoController();
 controller.formListener();
+
+controller.displayTodo();
