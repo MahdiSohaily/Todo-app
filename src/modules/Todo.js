@@ -10,7 +10,7 @@ export default class Todo {
     return items ? items.length : 0;
   }
 
-  addBook() {
+  addTodo() {
     let dataStored = [];
     let todos = [];
     if (localStorage.getItem('todos')) {

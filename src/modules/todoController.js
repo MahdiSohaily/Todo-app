@@ -1,13 +1,15 @@
 import Todo from './Todo.js';
 export default class todoController {
-  static formListener() {
+  //
+  formListener() {
     const form = document.querySelector('.form');
-    const input = document.querySelector('.todo-input');
-    form.addEventListener('submit', () => {
-      console.log('hello');
-      const value = input.value;
-      const todo = new Todo(value);
-      console.log(todo);
-    });
+    form.addEventListener('submit', this.createTodo);
+  }
+
+  //   function to create new todo object
+  createTodo() {
+    const value = document.querySelector('.todo-input').value;
+    const todo = new Todo(value);
+    todo.addTodo();
   }
 }

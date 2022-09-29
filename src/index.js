@@ -5,4 +5,5 @@ import todoController from './modules/todoController.js';
 const container = document.querySelector('.todo-list');
 // container.innerHTML = appendTOdo();
 themeController();
-todoController.formListener;
+const controller = new todoController();
+controller.formListener();
