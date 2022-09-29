@@ -58,4 +58,10 @@ export default class Todo {
       return element;
     };
   }
+
+  // function to mark a todo as a complete
+  markComplete(index) {}
+
+  // function to undo the marked as a complete task
+  undoCompleted(index) {}
 }
