@@ -6,6 +6,7 @@
   --state-hover-color: hsl(232, 11%, 39%);
 }
 
+/* color theme for dark mode system or OS */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-body: hsl(235, 21%, 11%);
@@ -16,6 +17,7 @@
   }
 }
 
+/* set the root attribute color theme to light (switching manually) */
 [color-scheme='light'] {
   --bg-body: hsl(0, 0%, 98%);
   --bg-todo: hsl(0, 0%, 100%);
@@ -24,6 +26,7 @@
   --state-hover-color: hsl(232, 11%, 39%);
 }
 
+/* set the root attribute color theme to dark (switching manually) */
 [color-scheme='dark'] {
   --bg-body: hsl(235, 21%, 11%);
   --bg-todo: hsl(235, 24%, 19%);
@@ -32,6 +35,7 @@
   --state-hover-color: hsl(0deg, 0%, 100%);
 }
 
+/* ----------- CSS RESET STYLES START ---------- */
 /* Box sizing rules */
 *,
 *::before,
@@ -101,37 +105,9 @@ select {
     scroll-behavior: auto !important;
   }
 }
+/* ----------- CSS RESET STYLES END ---------- */
 
-header.hero-banner {
-  background-image: url('./images/bg-mobile-light.jpg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 300px;
-}
-
-@media screen and (min-width: 40em) {
-  header.hero-banner {
-    background-image: url('./images/bg-desktop-light.jpg');
-    background-size: cover;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  header.hero-banner {
-    background-image: url('./images/bg-mobile-dark.jpg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 300px;
-  }
-}
-
-@media screen and (prefers-color-scheme: dark) and (min-width: 40em) {
-  header.hero-banner {
-    background-image: url('./images/bg-desktop-dark.jpg');
-    background-size: cover;
-  }
-}
-
+/* ----------- UTILITY CLASSES START ---------- */
 main {
   position: relative;
   min-height: 400px;
@@ -182,6 +158,55 @@ input {
   color: var(--state-color);
 }
 
+/* ----------- UTILITY CLASSES END ---------- */
+
+/* ----------- HEADER SECTION STYLES START ---------- */
+header.hero-banner {
+  background-image: url('./images/bg-mobile-light.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 300px;
+}
+
+@media screen and (min-width: 40em) {
+  header.hero-banner {
+    background-image: url('./images/bg-desktop-light.jpg');
+    background-size: cover;
+  }
+}
+
+/* change the background image for light mode (automatically)*/
+@media (prefers-color-scheme: dark) {
+  header.hero-banner {
+    background-image: url('./images/bg-mobile-dark.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 300px;
+  }
+}
+
+/* change the background image for dark mode mode (automatically)*/
+@media screen and (prefers-color-scheme: dark) and (min-width: 40em) {
+  header.hero-banner {
+    background-image: url('./images/bg-desktop-dark.jpg');
+    background-size: cover;
+  }
+}
+
+/* changing background image (manually) when switched to light theme */
+[color-scheme='light'] header.hero-banner {
+  background-image: url('./images/bg-desktop-light.jpg');
+  background-size: cover;
+}
+
+/* changing background image (manually) when switched to dark theme */
+[color-scheme='dark'] header.hero-banner {
+  background-image: url('./images/bg-desktop-dark.jpg');
+  background-size: cover;
+}
+
+/* ----------- HEADER SECTION STYLES END ---------- */
+/* ----------- TO DO CONTAINER SECTION STYLES START ---------- */
 .todo-container {
   position: absolute;
   top: -220px;
@@ -202,6 +227,7 @@ input {
   cursor: pointer;
 }
 
+/* 1.1 form input section styles */
 .todo-input::placeholder {
   color: var(--state-color);
 }
@@ -215,6 +241,7 @@ input {
   color: var(--text-active);
 }
 
+/* 2.2 todo list section styles  */
 .todo-item {
   display: flex;
   align-items: center;
@@ -264,6 +291,7 @@ input {
   opacity: 1;
 }
 
+/* list status navigating section styles */
 .state {
   display: flex;
   justify-content: space-between;
