@@ -125,7 +125,7 @@ main {
   min-height: 380px;
 }
 
-.todo-input {
+input[type='text'] {
   width: 100%;
   background-color: transparent;
   border: none;
