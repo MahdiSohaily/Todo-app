@@ -123,7 +123,7 @@ main {
   min-height: 380px;
 }
 
-input {
+input[type='text'] {
   width: 100%;
   background-color: transparent;
   border: none;
@@ -261,18 +261,21 @@ header.hero-banner {
 .todo-item {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
+  text-align: left;
   border-bottom: 1px solid var(--state-color);
 }
 
-.check {
+input[type='radio'] {
   width: 25px;
   height: 25px;
   border-radius: 50%;
   border: 1px solid var(--state-color);
+  background-color: rebeccapurple;
 }
 
-.check.active {
+input:checked + .check {
   background: url('./images/icon-check.png'),
     linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
   background-repeat: no-repeat;
@@ -290,7 +293,7 @@ header.hero-banner {
   color: var(--text-active);
 }
 
-.task.active {
+input:checked + .task {
   text-decoration: line-through;
   color: var(--state-color);
 }
