@@ -43,14 +43,14 @@ export default class todoController {
             <li class="todo-item px-4 active" id="${element.index}" >
                 <input type="radio" name="vehicle1" value="${element.description}"> 
                 <p title="Double click to edit" class="task">${element.description}</p>
-                <img class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
+                <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
             </li>`;
     } else {
       elements = `
             <li class="todo-item px-4" id="${element.index}" >
                 <input type="radio" name="vehicle1" value="${element.description}">
                 <p title="Double click to edit" class="task">${element.description}</p>
-                <img class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
+                <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
             </li>`;
     }
     return elements;
