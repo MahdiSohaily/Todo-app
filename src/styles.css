@@ -1,5 +1,5 @@
 :root {
-  --bg-body: hsl(0, 0%, 98%);
+  --bg-body: hsl(0, 0%, 95%);
   --bg-todo: hsl(0, 0%, 100%);
   --text-active: hsl(244, 9%, 33%);
   --state-color: hsl(240, 5%, 66%);
@@ -19,7 +19,7 @@
 
 /* set the root attribute color theme to light (switching manually) */
 [color-scheme='light'] {
-  --bg-body: hsl(0, 0%, 98%);
+  --bg-body: hsl(0, 0%, 95%);
   --bg-todo: hsl(0, 0%, 100%);
   --text-active: hsl(244, 9%, 33%);
   --state-color: hsl(240, 5%, 66%);
@@ -110,7 +110,7 @@ select {
 /* ----------- UTILITY CLASSES START ---------- */
 main {
   position: relative;
-  min-height: 400px;
+  min-height: 500px;
 }
 
 input {
@@ -215,6 +215,7 @@ header.hero-banner {
   width: 100%;
   max-width: 540px;
   padding-inline: 1rem;
+  overflow-y: visible;
 }
 
 .todo-header {
@@ -297,11 +298,13 @@ header.hero-banner {
   display: flex;
   justify-content: space-between;
   font-size: 14px;
+  overflow: visible;
 }
 
 .stages-menu {
   position: absolute;
   inset: 0;
+  height: 50px;
   top: 5rem;
   background-color: var(--bg-todo);
   display: flex;
@@ -313,8 +316,9 @@ header.hero-banner {
 
 @media screen and (min-width: 40em) {
   .stages-menu {
-    position: relative;
-    background-color: var(--bg-todo);
+    position: static;
+    height: auto;
+    background-color: none;
     display: flex;
     gap: 1rem;
   }
