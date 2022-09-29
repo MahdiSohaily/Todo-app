@@ -18,7 +18,7 @@ export default class todoController {
   }
 
   // function to get data from local storage and display it to the main page
-  displayTodo() {
+  displayTodo(state = 'all') {
     let dataContainer = document.querySelector('.todo-list');
     dataContainer.innerHTML = '';
     const todo = new Todo();
