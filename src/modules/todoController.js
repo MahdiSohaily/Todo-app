@@ -1,6 +1,10 @@
 import { constant } from 'lodash';
 import Todo from './Todo.js';
 export default class todoController {
+  constructor() {
+    this.formListener();
+    this.displayTodo();
+  }
   // function to listen to form submission
   formListener() {
     const form = document.querySelector('.form');
@@ -79,4 +83,7 @@ export default class todoController {
       });
     });
   }
+
+  // function to listen for delete icon click to delete intended todo item
+  enableDelete() {}
 }
