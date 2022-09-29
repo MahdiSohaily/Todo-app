@@ -21,17 +21,36 @@ export default class Todo {
       todos = JSON.parse(dataStored);
     }
     todos.push(this);
-    localStorage.setItem('todos', JSON.stringify(todos));
+    this.updateLocalStorage(todos);
   }
 
   // function to get all the todo items stored in the local storage
-  getTodo() {
+  getTodo(state = 'all') {
     let todos = 0;
-    if (this.getIndex()) {
-      let dataStored = localStorage.getItem('todos');
+    let dataStored = localStorage.getItem('todos');
+    if (dataStored && state === 'all') {
       todos = JSON.parse(dataStored);
+    } else if (dataStored) {
+      let data = JSON.parse(dataStored);
+      todos = data.filter(this.getPartOfData(state));
     }
     return todos;
+  }
+
+  getPartOfData(part) {
+    if (part === 'active') {
+      return function (element) {
+        if ((element.completed === false)) {
+          return element;
+        }
+      };
+    } else {
+      return function (element) {
+        if ((element.completed === true)) {
+          return element;
+        }
+      };
+    }
   }
 
   // function to delete an specific item from local storage based on it's ID
@@ -39,7 +58,7 @@ export default class Todo {
     const toDos = this.getTodo();
     let data = toDos.filter(this.cleanData(index));
     let update = data.map(this.updateID(index));
-    localStorage.setItem('todos', JSON.stringify(update));
+    this.updateLocalStorage(update);
   }
 
   // function to filter existing data from the one intended to be deleted
@@ -60,8 +79,23 @@ export default class Todo {
   }
 
   // function to mark a todo as a complete
-  markComplete(index) {}
+  markComplete(index, completed) {
+    const toDos = this.getTodo();
+    let update = toDos.map(this.updateStatus(index, completed));
+    this.updateLocalStorage(update);
+  }
 
-  // function to undo the marked as a complete task
-  undoCompleted(index) {}
+  updateStatus(index, operation) {
+    return function (element) {
+      if (element.index == index) {
+        element.completed = operation;
+      }
+      return element;
+    };
+  }
+
+  // function to update local storage with new data
+  updateLocalStorage(data) {
+    localStorage.setItem('todos', JSON.stringify(data));
+  }
 }

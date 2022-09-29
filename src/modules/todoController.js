@@ -4,6 +4,7 @@ export default class todoController {
   run() {
     this.formListener();
     this.displayTodo();
+    this.getPartOfData();
   }
   // function to listen to form submission
   formListener() {
@@ -54,20 +55,20 @@ export default class todoController {
   }
 
   // function to create corresponding HTML elements for local storage data
-  generateElements(element) {
+  generateElements(item) {
     let elements = '';
-    if (element.completed) {
+    if (item.completed) {
       elements = `
-            <li class="todo-item px-4 active" id="${element.index}" >
-                <input class="mark-complete" type="checkbox" name="todo" value="${element.description}"> 
-                <p title="Double click to edit" class="task">${element.description}</p>
+            <li class="todo-item px-4 active" id="${item.index}" >
+                <input checked class="mark-complete" type="checkbox" name="todo" value="${item.description}"> 
+                <p title="Double click to edit" class="task">${item.description}</p>
                 <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
             </li>`;
     } else {
       elements = `
-            <li class="todo-item px-4" id="${element.index}" >
-                <input class="mark-complete" type="checkbox" name="todo" value="${element.description}">
-                <p title="Double click to edit" class="task">${element.description}</p>
+            <li class="todo-item px-4" id="${item.index}" >
+                <input class="mark-complete" type="checkbox" name="todo" value="${item.description}">
+                <p title="Double click to edit" class="task">${item.description}</p>
                 <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
             </li>`;
     }
@@ -111,22 +112,28 @@ export default class todoController {
       element.addEventListener('change', (e) => {
         const index = e.target.closest('.todo-item').id;
         if (e.target.checked) {
-          this.markComplete(index);
+          this.markComplete(index, true);
         } else {
-          this.undoComplete(index);
+          this.markComplete(index, false);
         }
       });
     });
   }
 
   // function to mark a todo task as complete
-  markComplete(index) {
-    const todo = new Todo()
-    todo.completed()
+  markComplete(index, completed) {
+    const todo = new Todo();
+    todo.markComplete(index, completed);
   }
 
-  // function to undo mark as complete
-  undoComplete(index) {
-    console.log(`undo ${index}`);
+  //
+  getPartOfData() {
+    const stage = document.querySelectorAll('.stage-item');
+    stage.forEach((element) => {
+      element.addEventListener('click', (e) => {
+        const part = e.target.getAttribute('data-display');
+        this.displayTodo(part);
+      });
+    });
   }
 }
