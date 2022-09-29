@@ -5,6 +5,7 @@ export default class todoController {
     this.formListener();
     this.displayTodo();
     this.getPartOfData();
+    this.deleteCompleted();
   }
   // function to listen to form submission
   formListener() {
@@ -31,6 +32,7 @@ export default class todoController {
     const control = new todoController();
     control.enableEdit();
     control.enableDelete();
+    control.changeStatus();
   }
 
   // function to get data from local storage and display it to the main page
@@ -39,7 +41,7 @@ export default class todoController {
     dataContainer.innerHTML = '';
     const todo = new Todo();
     const data = todo.getTodo(state);
-    if (data) {
+    if (data.length) {
       data.forEach((element) => {
         dataContainer.innerHTML += this.generateElements(element);
       });
@@ -126,7 +128,7 @@ export default class todoController {
     todo.markComplete(index, completed);
   }
 
-  //
+  //a function to get a specific part of data
   getPartOfData() {
     const stage = document.querySelectorAll('.stage-item');
     let activeItem = document.querySelector('.stage-item.active');
@@ -141,6 +143,17 @@ export default class todoController {
         const part = e.target.getAttribute('data-display');
         this.displayTodo(part);
       });
+    });
+  }
+
+  //function to delete all the completed tasks at once
+  deleteCompleted() {
+    const removeCompleted = document.querySelector('.remove-complete');
+    removeCompleted.addEventListener('click', () => {
+      const todo = new Todo();
+      const data = todo.getTodo('active');
+      todo.updateLocalStorage(data);
+      this.displayTodo();
     });
   }
 }
