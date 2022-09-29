@@ -18,7 +18,6 @@ export default class Todo {
       todos = JSON.parse(dataStored);
     }
     todos.push(this);
-    console.log(this);
     localStorage.setItem('todos', JSON.stringify(todos));
   }
 
@@ -29,5 +28,17 @@ export default class Todo {
       todos = JSON.parse(dataStored);
     }
     return todos;
+  }
+
+  deleteTodo(index) {
+    const toDos = this.getTodo();
+    let data = toDos.filter(this.cleanData(index));
+    localStorage.setItem('todos', JSON.stringify(data));
+  }
+
+  cleanData(index) {
+    return function (element) {
+      return element.index != index;
+    };
   }
 }

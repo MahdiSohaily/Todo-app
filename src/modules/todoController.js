@@ -94,7 +94,10 @@ export default class todoController {
     const delete_btn = document.querySelectorAll('.cross-icon');
     delete_btn.forEach((element) => {
       element.addEventListener('click', (e) => {
-
+        const parent = e.target.closest('.todo-item');
+        const todo = new Todo();
+        todo.deleteTodo(parent.id);
+        parent.remove();
       });
     });
   }
