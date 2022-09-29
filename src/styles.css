@@ -290,6 +290,7 @@ input:checked + .check {
 
 .task {
   padding-top: 4px;
+  width: 100%;
   color: var(--text-active);
 }
 

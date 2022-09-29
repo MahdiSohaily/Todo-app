@@ -40,15 +40,16 @@ export default class todoController {
     let elements = '';
     if (element.completed) {
       elements = `
-            <li class="todo-item px-4 active" id="${element.index}" title="Double click to edit">
-                <input type="radio" id="vehicle1" name="vehicle1" value="${element.description}"> 
-                <p class="task">${element.description}</p>
+            <li class="todo-item px-4 active" id="${element.index}" >
+                <input type="radio" name="vehicle1" value="${element.description}"> 
+                <p title="Double click to edit" class="task">${element.description}</p>
                 <img class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
             </li>`;
     } else {
       elements = `
-            <li class="todo-item px-4" id="${element.index}" title="Double click to edit">
-                <input type="radio" id="vehicle1" name="vehicle1" value="${element.description}"> <p class="task">${element.description}</p>
+            <li class="todo-item px-4" id="${element.index}" >
+                <input type="radio" name="vehicle1" value="${element.description}">
+                <p title="Double click to edit" class="task">${element.description}</p>
                 <img class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
             </li>`;
     }
@@ -61,6 +62,7 @@ export default class todoController {
     tasks.forEach((element) => {
       element.addEventListener('dblclick', (e) => {
         const element = e.target;
+        element.style.display = 'none';
         const input = element.previousElementSibling;
         input.type = 'text';
       });
