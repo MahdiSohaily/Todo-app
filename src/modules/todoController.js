@@ -40,6 +40,7 @@ export default class TodoController {
     }
     dataContainer.innerHTML += `
         <li class="todo-item px-4" id="${todo.index}" >
+            <span class="check change-state"></span>
             <input class="mark-complete" type="checkbox" name="todo" value="${todo.description}">
             <p title="Double click to edit" class="task">${todo.description}</p>
             <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
@@ -80,6 +81,7 @@ export default class TodoController {
     if (item.completed) {
       elements = `
             <li class="todo-item px-4 active" id="${item.index}" >
+                <span class="check active change-state"></span>
                 <input checked class="mark-complete" type="checkbox" name="todo" value="${item.description}"> 
                 <p title="Double click to edit" class="task">${item.description}</p>
                 <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
@@ -87,6 +89,7 @@ export default class TodoController {
     } else {
       elements = `
             <li class="todo-item px-4" id="${item.index}" >
+                <span class="check change-state"></span>
                 <input class="mark-complete" type="checkbox" name="todo" value="${item.description}">
                 <p title="Double click to edit" class="task">${item.description}</p>
                 <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
@@ -143,15 +146,18 @@ export default class TodoController {
 
   // a function to add an event listener to checkbox input to mark todo as completed;
   changeStatus() {
-    const todos = document.querySelectorAll('.mark-complete');
+    const todos = document.querySelectorAll('.change-state');
     todos.forEach((element) => {
-      element.addEventListener('change', (e) => {
+      element.addEventListener('click', (e) => {
+        e.target.classList.toggle('active');
         const index = e.target.closest('.todo-item').id;
-        if (e.target.checked) {
+        if (e.target.classList.contains('active')) {
+          e.target.nextElementSibling.checked = true;
           this.markComplete(index, true);
           this.counter = this.activeCount();
           this.counterContainer.innerText = this.counter;
         } else {
+          e.target.nextElementSibling.checked = false;
           this.markComplete(index, false);
           this.counter = this.activeCount();
           this.counterContainer.innerText = this.counter;
