@@ -1,6 +1,19 @@
 import Todo from './Todo.js';
 
 export default class TodoController {
+  constructor() {
+    const todo = new Todo();
+    const data = todo.getTodo('active');
+    this.counter = data.length;
+    this.counterContainer = document.querySelector('.counter');
+  }
+
+  activeCount() {
+    const todo = new Todo();
+    const data = todo.getTodo('active');
+    return data.length;
+  }
+
   run() {
     this.formListener();
     this.displayTodo();
@@ -23,14 +36,17 @@ export default class TodoController {
     input.value = null;
     if (todo.getIndex() <= 1) {
       dataContainer.innerHTML = '';
+      this.counter = 0;
     }
     dataContainer.innerHTML += `
         <li class="todo-item px-4" id="${todo.index}" >
+            <span class="check change-state"></span>
             <input class="mark-complete" type="checkbox" name="todo" value="${todo.description}">
             <p title="Double click to edit" class="task">${todo.description}</p>
             <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
         </li>`;
     const Control = new TodoController();
+    Control.counterContainer.innerText = Control.counter;
     Control.enableEdit();
     Control.enableDelete();
     Control.changeStatus();
@@ -46,10 +62,12 @@ export default class TodoController {
       data.forEach((element) => {
         dataContainer.innerHTML += this.generateElements(element);
       });
+      this.counterContainer.innerText = this.counter;
       this.enableEdit();
       this.enableDelete();
       this.changeStatus();
     } else {
+      this.counterContainer.innerText = this.counter;
       dataContainer.innerHTML = `
         <li class="todo-item px-4">
             <p class="task">Nothing to show</p>
@@ -63,6 +81,7 @@ export default class TodoController {
     if (item.completed) {
       elements = `
             <li class="todo-item px-4 active" id="${item.index}" >
+                <span class="check active change-state"></span>
                 <input checked class="mark-complete" type="checkbox" name="todo" value="${item.description}"> 
                 <p title="Double click to edit" class="task">${item.description}</p>
                 <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
@@ -70,6 +89,7 @@ export default class TodoController {
     } else {
       elements = `
             <li class="todo-item px-4" id="${item.index}" >
+                <span class="check change-state"></span>
                 <input class="mark-complete" type="checkbox" name="todo" value="${item.description}">
                 <p title="Double click to edit" class="task">${item.description}</p>
                 <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
@@ -114,6 +134,7 @@ export default class TodoController {
     const deleteBtn = document.querySelectorAll('.cross-icon');
     deleteBtn.forEach((element) => {
       element.addEventListener('click', (e) => {
+        this.counter -= 1;
         const parent = e.target.closest('.todo-item');
         const todo = new Todo();
         todo.deleteTodo(parent.id);
@@ -125,14 +146,21 @@ export default class TodoController {
 
   // a function to add an event listener to checkbox input to mark todo as completed;
   changeStatus() {
-    const todos = document.querySelectorAll('.mark-complete');
+    const todos = document.querySelectorAll('.change-state');
     todos.forEach((element) => {
-      element.addEventListener('change', (e) => {
+      element.addEventListener('click', (e) => {
+        e.target.classList.toggle('active')
         const index = e.target.closest('.todo-item').id;
-        if (e.target.checked) {
+        if (e.target.classList.contains('active')) {
+          e.target.nextElementSibling.checked = true;
           this.markComplete(index, true);
+          this.counter = this.activeCount();
+          this.counterContainer.innerText = this.counter;
         } else {
+          e.target.nextElementSibling.checked = false;
           this.markComplete(index, false);
+          this.counter = this.activeCount();
+          this.counterContainer.innerText = this.counter;
         }
       });
     });
@@ -170,6 +198,7 @@ export default class TodoController {
       const data = todo.getTodo('active');
       todo.updateLocalStorage(data);
       this.displayTodo();
+      this.counterContainer.innerText = this.activeCount();
     });
   }
 }

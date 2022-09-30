@@ -272,24 +272,22 @@ header.hero-banner {
   border-bottom: 1px solid var(--state-color);
 }
 
-input[type='radio'] {
+.check {
   width: 25px;
-  height: 25px;
+  height: 20px;
   border-radius: 50%;
   border: 1px solid var(--state-color);
-  background-color: rebeccapurple;
 }
 
 .check:hover {
   border: 1px solid hsl(192deg, 100%, 67%);
 }
 
-input:checked + .check {
-  background: url('./images/icon-check.png'),
+.check.active {
+  background:
+    url('./images/icon-check.png'),
     linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
   background-repeat: no-repeat;
-  width: 25px;
-  height: 25px;
   background-position: center;
 }
 
@@ -385,4 +383,13 @@ p.footer {
   p.footer {
     margin-top: 3rem;
   }
+}
+
+/* Hide the browser's default checkbox */
+input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 }
