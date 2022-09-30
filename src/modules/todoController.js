@@ -149,7 +149,7 @@ export default class TodoController {
     const todos = document.querySelectorAll('.change-state');
     todos.forEach((element) => {
       element.addEventListener('click', (e) => {
-        e.target.classList.toggle('active');
+        e.target.classList.toggle('active')
         const index = e.target.closest('.todo-item').id;
         if (e.target.classList.contains('active')) {
           e.target.nextElementSibling.checked = true;
