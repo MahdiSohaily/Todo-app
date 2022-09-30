@@ -2,7 +2,16 @@ import Todo from './Todo.js';
 
 export default class TodoController {
   constructor() {
-    this.counter = 0;
+    const todo = new Todo();
+    const data = todo.getTodo('active');
+    this.counter = data.length;
+    this.counterContainer = document.querySelector('.counter');
+  }
+
+  activeCount() {
+    const todo = new Todo();
+    const data = todo.getTodo('active');
+    return data.length;
   }
 
   run() {
@@ -27,6 +36,7 @@ export default class TodoController {
     input.value = null;
     if (todo.getIndex() <= 1) {
       dataContainer.innerHTML = '';
+      this.counter = 0;
     }
     dataContainer.innerHTML += `
         <li class="todo-item px-4" id="${todo.index}" >
@@ -35,6 +45,7 @@ export default class TodoController {
             <img title="Delete item" class="cross-icon" src="./images/icon-cross.png" width="15" height="15" alt="cross icon">
         </li>`;
     const Control = new TodoController();
+    Control.counterContainer.innerText = Control.counter;
     Control.enableEdit();
     Control.enableDelete();
     Control.changeStatus();
@@ -50,10 +61,12 @@ export default class TodoController {
       data.forEach((element) => {
         dataContainer.innerHTML += this.generateElements(element);
       });
+      this.counterContainer.innerText = this.counter;
       this.enableEdit();
       this.enableDelete();
       this.changeStatus();
     } else {
+      this.counterContainer.innerText = this.counter;
       dataContainer.innerHTML = `
         <li class="todo-item px-4">
             <p class="task">Nothing to show</p>
@@ -118,6 +131,7 @@ export default class TodoController {
     const deleteBtn = document.querySelectorAll('.cross-icon');
     deleteBtn.forEach((element) => {
       element.addEventListener('click', (e) => {
+        this.counter -= 1;
         const parent = e.target.closest('.todo-item');
         const todo = new Todo();
         todo.deleteTodo(parent.id);
@@ -135,8 +149,12 @@ export default class TodoController {
         const index = e.target.closest('.todo-item').id;
         if (e.target.checked) {
           this.markComplete(index, true);
+          this.counter -= 1;
+          this.counterContainer.innerText = this.counter;
         } else {
           this.markComplete(index, false);
+          this.counter += 1;
+          this.counterContainer.innerText = this.counter;
         }
       });
     });
@@ -174,6 +192,7 @@ export default class TodoController {
       const data = todo.getTodo('active');
       todo.updateLocalStorage(data);
       this.displayTodo();
+      this.counterContainer.innerText = this.activeCount();
     });
   }
 }
