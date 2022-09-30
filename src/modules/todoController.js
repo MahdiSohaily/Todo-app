@@ -1,6 +1,10 @@
 import Todo from './Todo.js';
 
 export default class TodoController {
+  constructor() {
+    this.counter = 0;
+  }
+
   run() {
     this.formListener();
     this.displayTodo();
