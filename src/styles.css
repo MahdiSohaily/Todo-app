@@ -284,7 +284,8 @@ header.hero-banner {
 }
 
 .check.active {
-  background: url('./images/icon-check.png'),
+  background:
+    url('./images/icon-check.png'),
     linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
   background-repeat: no-repeat;
   background-position: center;
