@@ -149,11 +149,11 @@ export default class TodoController {
         const index = e.target.closest('.todo-item').id;
         if (e.target.checked) {
           this.markComplete(index, true);
-          this.counter -= 1;
+          this.counter = this.activeCount();
           this.counterContainer.innerText = this.counter;
         } else {
           this.markComplete(index, false);
-          this.counter += 1;
+          this.counter = this.activeCount();
           this.counterContainer.innerText = this.counter;
         }
       });
