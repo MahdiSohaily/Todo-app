@@ -1,4 +1,4 @@
-# Todo app solution 
+# Todo app
 
 ## Table of contents
 
@@ -6,6 +6,8 @@
   - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)
   - [Links](#links)
+- [Project Setup](#Setup-Project)
+  - [commands](#command)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
@@ -13,7 +15,6 @@
   - [Useful resources](#useful-resources)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
-
 
 ## Overview
 
@@ -29,17 +30,27 @@ Users should be able to:
 - Filter by all/active/complete todos
 - Clear all completed todos
 - Toggle light and dark mode
-- **Bonus**: Drag and drop to reorder items on the list
+- Drag and drop to reorder items on the list
+
+## Setup Project
+### commands
+In order to run this project locally in your machine follow the following steps
+
+```
+git clone https://github.com/MahdiSohaily/Todo-app.git
+cd Todo-app
+npm install
+npm run dev
+npm run start
+```
 
 ### Screenshot
 
-- Screenshot of the solution (Desktop)
-![Solution Screenshot](./design/desktop.png)
-- Screenshot of the solution (Mobile)
-![Solution Screenshot](./design/mobile.png)
+| Desktop version                              |               Mobile Version                |
+| -------------------------------------------- | :-----------------------------------------: |
+| ![Solution Screenshot](./design/desktop.png) | ![Solution Screenshot](./design/mobile.png) |
 
 ### Links
-
 
 - Live Site URL: [See Demo](https://mahdisohaily.github.io/testimonials-grid-section-main/)
 
@@ -52,8 +63,11 @@ Users should be able to:
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- Webpack
+- Webpack 5
+- JavaScript
+
 ## Author
 
 - Frontend Mentor - [@MahdiSohaily](https://www.frontendmentor.io/profile/MahdiSohaily)
 - Twitter - [@Mahdi_Rezaei_AF](https://twitter.com/Mahdi_Rezaei_AF)
+- linkedIn - [@Mahdi-rezaei](https://www.linkedin.com/in/mahdi-rezaei-74705713b)
