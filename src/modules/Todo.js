@@ -103,6 +103,7 @@ export default class Todo {
     this.updateLocalStorage(update);
   }
 
+  // function to update the completed value of a TO-DO item based on it's index property value
   updateStatus(index, operation) {
     return function (element) {
       if (element.index == index) {
