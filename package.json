@@ -1,7 +1,7 @@
 {
   "name": "setup-webpack",
   "version": "1.0.0",
-  "description": "The purpose of this repository is to setup webpack for further usage.",
+  "description": "This is a simple Todo app powered by JavaScript programming language.",
   "private": true,
   "scripts": {
     "dev": "webpack --config webpack.config.js",
