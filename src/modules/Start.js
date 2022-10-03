@@ -4,6 +4,7 @@ import todoController from './todoController.js';
 import Sortable from './Sortable.js';
 
 export default function start() {
+  // enable controller function to control user actions and interaction
   themeController();
   const controller = new todoController();
   controller.run();
