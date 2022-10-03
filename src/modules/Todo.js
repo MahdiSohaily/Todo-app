@@ -37,6 +37,7 @@ export default class Todo {
     return todos;
   }
 
+  // function to get specific type of data based on their completed property value (true, false)
   getPartOfData(part) {
     if (part === 'active') {
       return function (element) {
