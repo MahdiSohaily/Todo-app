@@ -7,6 +7,7 @@ export default function start() {
   themeController();
   const controller = new todoController();
   controller.run();
+  // create new object of sortable library to enable drag and drop feature.
   new Sortable(document.querySelector('.todo-list'), {
     animation: 300,
   });
