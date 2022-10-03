@@ -114,6 +114,8 @@ export default class TodoController {
         input.focus();
       });
     });
+
+    // setting an event listener to the input blur to update it's value 
     const markComplete = document.querySelectorAll('.mark-complete');
     markComplete.forEach((element) => {
       element.addEventListener('blur', (e) => {
