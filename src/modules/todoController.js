@@ -8,12 +8,14 @@ export default class TodoController {
     this.counterContainer = document.querySelector('.counter');
   }
 
+  // function to get the number of TO-DO items with the completed property of false
   activeCount() {
     const todo = new Todo();
     const data = todo.getTodo('active');
     return data.length;
   }
 
+  // function to run functionalities to listen to the user interaction and behave accordingly
   run() {
     this.formListener();
     this.displayTodo();
