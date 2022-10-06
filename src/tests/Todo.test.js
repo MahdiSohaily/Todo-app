@@ -81,4 +81,27 @@ describe('Delete items tests', ()=> {
     const deletedItem = data.filter(startsWith(delIndex));
     expect(deletedItem).toEqual([]);
   });
+
+  test('Adding three Todos to local storage and deleting the first', () => {
+    const obj = new Todo('Item Five');
+    const obj2 = new Todo('Item Six');
+    const obj3 = new Todo('Item Seven');
+    obj.addTodo();    
+    obj2.addTodo();    
+    obj3.addTodo();    
+    const delIndex = obj.index;
+    obj.deleteTodo(delIndex);
+
+    const data = localStorage.getItem('todos')
+      ? JSON.parse(localStorage.getItem('todos'))
+      : [];
+
+    function startsWith(delIndex) {
+      return function (element) {
+        return element.index === delIndex;
+      };
+    }
+    const deletedItem = data.filter(startsWith(delIndex));
+    expect(deletedItem).toEqual([]);
+  });
 })
