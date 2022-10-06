@@ -3,7 +3,7 @@
  */
 import Todo from '../modules/Todo';
 
-// Script to test the
+// Script to test the addTodo() function
 describe('Addition test', () => {
   // Test One
   test('Adding TODO One to local storage', () => {
@@ -37,7 +37,6 @@ describe('Addition test', () => {
       ? JSON.parse(localStorage.getItem('todos'))
       : [];
     const current = JSON.stringify(data[data.length - 1]);
-
     expect(JSON.stringify(obj)).toEqual(current);
   });
 });
