@@ -40,3 +40,24 @@ describe('Addition test', () => {
     expect(JSON.stringify(obj)).toEqual(current);
   });
 });
+
+describe('Delete items tests', ()=> {
+  test('Adding TODO three to local storage', () => {
+    const obj = new Todo('Item Four');
+    obj.addTodo();    
+    const delIndex = obj.index;
+    obj.deleteTodo(delIndex);
+
+    const data = localStorage.getItem('todos')
+      ? JSON.parse(localStorage.getItem('todos'))
+      : [];
+
+    function startsWith(delIndex) {
+      return function (element) {
+        return element.index === delIndex;
+      };
+    }
+    const deletedItem = data.filter(startsWith(delIndex));
+    expect(deletedItem).toEqual([]);
+  });
+})
