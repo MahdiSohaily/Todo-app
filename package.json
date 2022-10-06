@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "gh-pages": "^4.0.0",
+    "jest-environment-jsdom": "^29.1.2",
     "lodash": "^4.17.21"
   }
 }
