@@ -6,7 +6,7 @@ import Todo from '../modules/Todo';
 // Script to test the
 describe('Addition test', () => {
   // Test One
-  test('Adding new TODO item to local storage', () => {
+  test('Adding TODO One to local storage', () => {
     const obj = new Todo('Item One');
     obj.addTodo();
     const data = localStorage.getItem('todos')
@@ -18,7 +18,7 @@ describe('Addition test', () => {
   });
 
   // Test Two
-  test('Adding new TODO item to local storage', () => {
+  test('Adding TODO two to local storage', () => {
     const obj = new Todo('Item Two');
     obj.addTodo();
     const data = localStorage.getItem('todos')
@@ -30,7 +30,7 @@ describe('Addition test', () => {
   });
 
   //   Test Three
-  test('Adding new TODO item to local storage', () => {
+  test('Adding TODO three to local storage', () => {
     const obj = new Todo('Item Three');
     obj.addTodo();
     const data = localStorage.getItem('todos')
