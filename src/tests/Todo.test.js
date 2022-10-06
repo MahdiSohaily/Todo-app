@@ -20,7 +20,7 @@ escribe('Addition test', () => {
 
   // Test Two
   test('Adding new TODO item to local storage', () => {
-    const obj = new Todo('Item One');
+    const obj = new Todo('Item Two');
     const data = localStorage.getItem('todos')
       ? JSON.parse(localStorage.getItem('todos'))
       : [];
