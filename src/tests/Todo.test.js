@@ -203,3 +203,34 @@ describe('"update status" tests', () => {
     expect(data[0].completed).toBe(true);
   });
 });
+
+describe('Tests for "Clear all completed" functionality', () => {
+  test('Clear completed tasks already present in localStorage (2 of 5 items)', () => {
+    const obj = new Todo('Item Six');
+    const todos = obj.getTodo('active');
+    const todosCompleted = todos.filter(obj.getPartOfData());
+
+    expect(todosCompleted.length).toBe(0);
+  });
+
+  test('Add one element, change state and clear it', () => {
+    const obj = new Todo('Item Seven');
+    obj.addTodo();
+    obj.markComplete(7, true);
+    const todos = obj.getTodo('active');
+    const todosCompleted = todos.filter(obj.getPartOfData());
+
+    expect(todosCompleted.length).toBe(0);
+  });
+
+  test('Mark every item as completed and removing them with clear all completed', () => {
+    const obj = new Todo('Item Eigth');
+    obj.markComplete(2, true);
+    obj.markComplete(3, true);
+    obj.markComplete(4, true);
+    obj.markComplete(6, true);
+    const todos = obj.getTodo('active');
+
+    expect(todos.length).toBe(0);
+  });
+});
