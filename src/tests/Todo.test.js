@@ -125,4 +125,25 @@ describe('Editing Items test', () => {
     console.log(getItem);
     expect(getItem[0].description).toBe('New Value');
   });
+
+  // Test Two
+  test('Adding Two TODO Items to local storage and Editing one', () => {
+    const obj = new Todo('Old value One');
+    obj.addTodo();
+    const obj2 = new Todo('Old value Two');
+    obj.addTodo();
+    const delIndex = obj.index;
+    obj.updateTodo(delIndex, 'New Value');
+    const data = localStorage.getItem('todos')
+      ? JSON.parse(localStorage.getItem('todos'))
+      : [];
+    function startsWith(delIndex) {
+      return function (element) {
+        return element.index === delIndex;
+      };
+    }
+    const getItem = data.filter(startsWith(delIndex));
+    console.log(getItem);
+    expect(getItem[0].description).toBe('New Value');
+  });
 });
