@@ -108,5 +108,22 @@ import Todo from '../modules/Todo';
 
 describe('Editing Items test', () => {
   // Test One
-  
+  test('Adding one TODO Item to local storage and Editing it', () => {
+    const obj = new Todo('Item Four');
+    obj.addTodo();
+    const delIndex = obj.index;
+    obj.deleteTodo(delIndex);
+
+    const data = localStorage.getItem('todos')
+      ? JSON.parse(localStorage.getItem('todos'))
+      : [];
+
+    function startsWith(delIndex) {
+      return function (element) {
+        return element.index === delIndex;
+      };
+    }
+    const deletedItem = data.filter(startsWith(delIndex));
+    expect(deletedItem).toEqual([]);
+  });
 });
