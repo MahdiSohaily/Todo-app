@@ -146,7 +146,7 @@ describe('Editing Items test', () => {
     console.log(getItem);
     expect(getItem[0].description).toBe('New Value');
   });
-  
+
   // Test Three
   test('Adding Three TODO Items to local storage and Editing one', () => {
     const obj = new Todo('Old value One');
@@ -230,7 +230,7 @@ describe('Tests for "Clear all completed" functionality', () => {
     obj.markComplete(4, true);
     obj.markComplete(6, true);
     const todos = obj.getTodo('active');
-
-    expect(todos.length).toBe(0);
+    const todosCompleted = todos.filter(obj.getPartOfData());
+    expect(todosCompleted.length).toBe(0);
   });
 });
