@@ -170,3 +170,36 @@ describe('Editing Items test', () => {
     expect(getItem[0].description).not.toBe('Old Value One');
   });
 });
+
+describe('"update status" tests', () => {
+  test('add one item and update status to completed', () => {
+    const obj = new Todo('Item Four');
+    obj.addTodo();
+    obj.markComplete(4, true);
+    const data = localStorage.getItem('todos')
+      ? JSON.parse(localStorage.getItem('todos'))
+      : [];
+    expect(data[3].completed).toBe(true);
+  });
+
+  test('add item and update completed status to true and the last one to false', () => {
+    const obj = new Todo('Item Five');
+    obj.addTodo();
+    obj.markComplete(5, true);
+    obj.markComplete(4, false);
+    const data = localStorage.getItem('todos')
+      ? JSON.parse(localStorage.getItem('todos'))
+      : [];
+    expect(data[3].completed).toBe(false);
+    expect(data[4].completed).toBe(true);
+  });
+
+  test('update completed status to true for the first element without adding', () => {
+    const obj = new Todo('Item Six');
+    obj.markComplete(1, true);
+    const data = localStorage.getItem('todos')
+      ? JSON.parse(localStorage.getItem('todos'))
+      : [];
+    expect(data[0].completed).toBe(true);
+  });
+});
