@@ -131,7 +131,7 @@ describe('Editing Items test', () => {
     const obj = new Todo('Old value One');
     obj.addTodo();
     const obj2 = new Todo('Old value Two');
-    obj.addTodo();
+    obj2.addTodo();
     const delIndex = obj.index;
     obj.updateTodo(delIndex, 'New Value');
     const data = localStorage.getItem('todos')
@@ -145,5 +145,28 @@ describe('Editing Items test', () => {
     const getItem = data.filter(startsWith(delIndex));
     console.log(getItem);
     expect(getItem[0].description).toBe('New Value');
+  });
+  
+  // Test Three
+  test('Adding Three TODO Items to local storage and Editing one', () => {
+    const obj = new Todo('Old value One');
+    obj.addTodo();
+    const obj2 = new Todo('Old value Two');
+    obj2.addTodo();
+    const obj3 = new Todo('Old value Two');
+    obj3.addTodo();
+    const delIndex = obj.index;
+    obj.updateTodo(delIndex, 'New Value');
+    const data = localStorage.getItem('todos')
+      ? JSON.parse(localStorage.getItem('todos'))
+      : [];
+    function startsWith(delIndex) {
+      return function (element) {
+        return element.index === delIndex;
+      };
+    }
+    const getItem = data.filter(startsWith(delIndex));
+    console.log(getItem);
+    expect(getItem[0].description).not.toBe('Old Value One');
   });
 });
