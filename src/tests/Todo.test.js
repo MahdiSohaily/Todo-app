@@ -122,7 +122,6 @@ describe('Editing Items test', () => {
       };
     }
     const getItem = data.filter(startsWith(delIndex));
-    console.log(getItem);
     expect(getItem[0].description).toBe('New Value');
   });
 
@@ -143,7 +142,6 @@ describe('Editing Items test', () => {
       };
     }
     const getItem = data.filter(startsWith(delIndex));
-    console.log(getItem);
     expect(getItem[0].description).toBe('New Value');
   });
 
@@ -166,7 +164,6 @@ describe('Editing Items test', () => {
       };
     }
     const getItem = data.filter(startsWith(delIndex));
-    console.log(getItem);
     expect(getItem[0].description).not.toBe('Old Value One');
   });
 });
