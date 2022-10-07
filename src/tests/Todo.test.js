@@ -113,7 +113,16 @@ describe('Editing Items test', () => {
     obj.addTodo();
     const delIndex = obj.index;
     obj.updateTodo(delIndex, 'New Value');
-    
+    const data = localStorage.getItem('todos')
+      ? JSON.parse(localStorage.getItem('todos'))
+      : [];
+    function startsWith(delIndex) {
+      return function (element) {
+        return element.index === delIndex;
+      };
+    }
+    const getItem = data.filter(startsWith(delIndex));
+    console.log(getItem);
     expect(getItem[0].description).toBe('New Value');
   });
 });
