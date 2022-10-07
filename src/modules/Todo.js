@@ -8,8 +8,9 @@ export default class Todo {
 
   // function to get the array length from local storage
   getIndex() {
-    let items = JSON.parse(localStorage.getItem('todos'));
-    return items ? items.length : 0;
+    return localStorage.getItem('todos')
+      ? JSON.parse(localStorage.getItem('todos')).length
+      : 0;
   }
 
   // function to add new todo to the local storage
